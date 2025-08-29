@@ -2,11 +2,11 @@
 
 This is an interactive CLI application written using python and uses SQL for its database
 
-# How to create a new user
+# How to create a new user(learner or mentor)
 
 Inside the PHASE-3-PROJECT directory you: 
 
-Run "python -m lib.cli create-user <username>" while inside the directory using your operating system's own cli
+Run "python -m lib.cli create-user <username> <role>" while inside the directory using your operating system's own cli
 
 # How to get your user account
 
