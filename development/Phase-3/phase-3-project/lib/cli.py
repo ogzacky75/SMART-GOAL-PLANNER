@@ -84,7 +84,7 @@ def select_skill(skill_name):
     """Select a skill by name: select-skill <skill_name>"""
     skill = get_skill_by_name(session, skill_name.strip())
     if skill:
-        click.secho(f"🎯 Selected skill: {skill.name}", fg="green")
+        click.secho(f"🎯 Selected skill: {skill.title}", fg="green")
         click.secho(f"📘 Description: {skill.description}", fg="blue")
     else:
         click.secho("❌ Skill not found", fg="red")
@@ -95,7 +95,7 @@ def recommend_skill():
     """Get a recommended new skill"""
     recommended = recommend_next_skill(session)
     if recommended:
-        click.secho(f"✨ Recommended skill: {recommended.name}", fg="green")
+        click.secho(f"✨ Recommended skill: {recommended.title}", fg="green")
         click.secho(f"📘 Description: {recommended.description}", fg="blue")
     else:
         click.secho("⚠️ No other skills available", fg="yellow")

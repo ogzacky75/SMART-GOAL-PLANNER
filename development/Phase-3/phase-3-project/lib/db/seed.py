@@ -15,26 +15,53 @@ def seed_data():
     session = Session()
 
     try:
-
         # Seed Users
-
         user1 = Users(username="alice", role="learner")
         user2 = Users(username="bob", role="mentor")
         session.add_all([user1, user2])
-
-        # Seed Skills
-
-        skill1 = skills(name="Python Basics", description="Learn variables, loops, and functions.")
-        skill2 = skills(name="SQL Fundamentals", description="Understand tables, queries, and joins.")
-        skill3 = skills(name="Git & GitHub", description="Version control basics with Git.")
-        skill4 = skills(name="Data Analysis", description="Intro to pandas, NumPy, and visualization.")
-        skill5 = skills(name="APIs", description="Learn how to interact with REST APIs in Python.")
+        session.commit()  
+        # Seed Skills 
+        skill1 = skills(
+            title="Python Basics",
+            description="Learn variables, loops, and functions.",
+            category="Programming",
+            created_by=user2.id,   
+            difficulty="Beginner"
+        )
+        skill2 = skills(
+            title="SQL Fundamentals",
+            description="Understand tables, queries, and joins.",
+            category="Databases",
+            created_by=user2.id,
+            difficulty="Beginner"
+        )
+        skill3 = skills(
+            title="Git & GitHub",
+            description="Version control basics with Git.",
+            category="Tools",
+            created_by=user2.id,
+            difficulty="Beginner"
+        )
+        skill4 = skills(
+            title="Data Analysis",
+            description="Intro to pandas, NumPy, and visualization.",
+            category="Data Science",
+            created_by=user2.id,
+            difficulty="Intermediate"
+        )
+        skill5 = skills(
+            title="APIs",
+            description="Learn how to interact with REST APIs in Python.",
+            category="Backend",
+            created_by=user2.id,
+            difficulty="Intermediate"
+        )
 
         session.add_all([skill1, skill2, skill3, skill4, skill5])
 
-        # Commit everything
+        
         session.commit()
-        print("Database seeded successfully!")
+        print("✅ Database seeded successfully!")
 
     except Exception as e:
         session.rollback()

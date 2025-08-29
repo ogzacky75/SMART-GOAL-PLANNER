@@ -4,7 +4,7 @@ This is an interactive CLI application written using python and uses SQL for its
 
 # How to create a new user
 
-Inside the lib directory you will find a file for the cli appication
+Inside the PHASE-3-PROJECT directory you: 
 
 Run "python -m lib.cli create-user john admin" while inside the directory using your operating system's own cli
 
