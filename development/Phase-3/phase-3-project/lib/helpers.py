@@ -1,8 +1,8 @@
 import random
 from lib.db.models import Skill
 
-def get_skill_by_name(session, name: str):
-    return session.query(Skill).filter_by(name=name).first()
+def get_skill_by_name(session, title: str):
+    return session.query(Skill).filter_by(title=title).first()
 
 def recommend_next_skill(session, exclude_id=None):
     query = session.query(Skill)
