@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from lib.db.models import Base, Users, skills, follows
+from lib.db.models import Base, User, Skill, follows
 
 DATABASE_URL = "sqlite:///micro.db"   
 
@@ -16,40 +16,40 @@ def seed_data():
 
     try:
         # Seed Users
-        user1 = Users(username="alice", role="learner")
-        user2 = Users(username="bob", role="mentor")
+        user1 = User(username="alice", role="learner")
+        user2 = User(username="bob", role="mentor")
         session.add_all([user1, user2])
         session.commit()  
         # Seed Skills 
-        skill1 = skills(
+        skill1 = Skill(
             title="Python Basics",
             description="Learn variables, loops, and functions.",
             category="Programming",
             created_by=user2.id,   
             difficulty="Beginner"
         )
-        skill2 = skills(
+        skill2 = Skill(
             title="SQL Fundamentals",
             description="Understand tables, queries, and joins.",
             category="Databases",
             created_by=user2.id,
             difficulty="Beginner"
         )
-        skill3 = skills(
+        skill3 = Skill(
             title="Git & GitHub",
             description="Version control basics with Git.",
             category="Tools",
             created_by=user2.id,
             difficulty="Beginner"
         )
-        skill4 = skills(
+        skill4 = Skill(
             title="Data Analysis",
             description="Intro to pandas, NumPy, and visualization.",
             category="Data Science",
             created_by=user2.id,
             difficulty="Intermediate"
         )
-        skill5 = skills(
+        skill5 = Skill(
             title="APIs",
             description="Learn how to interact with REST APIs in Python.",
             category="Backend",

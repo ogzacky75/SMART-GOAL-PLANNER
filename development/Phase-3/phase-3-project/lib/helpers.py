@@ -1,13 +1,13 @@
 import random
-from lib.db.models import skills
+from lib.db.models import Skill
 
 def get_skill_by_name(session, name: str):
-    return session.query(skills).filter_by(name=name).first()
+    return session.query(Skill).filter_by(name=name).first()
 
 def recommend_next_skill(session, exclude_id=None):
-    query = session.query(skills)
+    query = session.query(Skill)
     if exclude_id:
-        query = query.filter(skills.id != exclude_id)
+        query = query.filter(Skill.id != exclude_id)
     all_skills = query.all()
     if not all_skills:
         return None

@@ -1,7 +1,7 @@
 import click
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
-from lib.db.models import Users, skills,follows
+from lib.db.models import User, Skill,follows
 from lib.db.seed import seed_data
 from lib.helpers import get_skill_by_name, recommend_next_skill
 
@@ -28,7 +28,7 @@ def cli():
 def create_user(username, role):
     """Create a new user: create-user <username> <role>"""
     try:
-        new_user = Users(username=username, role=role)
+        new_user = User(username=username, role=role)
         session.add(new_user)
         session.commit()
         click.secho(f"✅ User {username} created with role {role}", fg="green")
@@ -41,7 +41,7 @@ def create_user(username, role):
 @click.argument("username")
 def get_user(username):
     """Get a user by username: get-user <username>"""
-    user = session.query(Users).filter_by(username=username).first()
+    user = session.query(User).filter_by(username=username).first()
     if user:
         click.secho(f"👤 ID={user.id}, Username={user.username}, Role={user.role}", fg="cyan")
     else:
@@ -53,7 +53,7 @@ def get_user(username):
 @click.argument("new_role")
 def update_user(username, new_role):
     """Update a user's role: update-user <username> <new_role>"""
-    user = session.query(Users).filter_by(username=username).first()
+    user = session.query(User).filter_by(username=username).first()
     if user:
         user.role = new_role
         session.commit()
@@ -66,7 +66,7 @@ def update_user(username, new_role):
 @click.argument("username")
 def delete_user(username):
     """Delete a user: delete-user <username>"""
-    user = session.query(Users).filter_by(username=username).first()
+    user = session.query(User).filter_by(username=username).first()
     if user:
         session.delete(user)
         session.commit()
@@ -84,8 +84,8 @@ def select_skill(skill_name):
     """Select a skill by name: select-skill <skill_name>"""
     skill = get_skill_by_name(session, skill_name.strip())
     if skill:
-        click.secho(f"🎯 Selected skill: {skills.title}", fg="green")
-        click.secho(f"📘 Description: {skills.description}", fg="blue")
+        click.secho(f"🎯 Selected skill: {Skill.title}", fg="green")
+        click.secho(f"📘 Description: {Skill.description}", fg="blue")
     else:
         click.secho("❌ Skill not found", fg="red")
 
