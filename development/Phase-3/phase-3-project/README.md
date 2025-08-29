@@ -6,27 +6,31 @@ This is an interactive CLI application written using python and uses SQL for its
 
 Inside the PHASE-3-PROJECT directory you: 
 
-Run "python -m lib.cli create-user john admin" while inside the directory using your operating system's own cli
+Run "python -m lib.cli create-user <username>" while inside the directory using your operating system's own cli
 
 # How to get your user account
 
-Run "python -m lib.cli get-user john" while inside the directory using your operating system's own cli.
+Run "python -m lib.cli get-user <username>" while inside the directory using your operating system's own cli.
 
 # How to update the user role 
 
-Run "python -m lib.cli update-user john moderator" while inside the directory using your operating system's own cli.
+Run "python -m lib.cli update-user <username> <ner_role>" while inside the directory using your operating system's own cli.
 
 # How to delete user
 
-Run "python -m lib.cli delete-user john" while inside the directory using your operating system's own cli.
+Run "python -m lib.cli delete-user <username>" while inside the directory using your operating system's own cli.
 
 # How to select a skill
 
-Run "python -m lib.cli select-skill Python" while inside the directory using your operating system's own cli.
+Run "python -m lib.cli select-skill <skill_name>" while inside the directory using your operating system's own cli.
 
 #  How to recomend a skill
 
 Run "python -m lib.cli recommend-skill" while inside the directory using your operating system's own cli.
+
+# How to follow 
+
+Run "python -m lib.cli follow <username>" while inside the directory using your operating system's own cli.
 
 # Colors and Output
 

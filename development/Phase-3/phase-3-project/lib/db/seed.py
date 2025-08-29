@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from lib.db.models import Base, Users, skills
+from lib.db.models import Base, Users, skills, follows
 
 DATABASE_URL = "sqlite:///micro.db"   
 
@@ -58,6 +58,12 @@ def seed_data():
         )
 
         session.add_all([skill1, skill2, skill3, skill4, skill5])
+        # Seed Follows
+        follow = follows(follower_id=user1.id, followed_id=user2.id)
+        session.add(follow)
+        session.commit()
+
+		
 
         
         session.commit()
